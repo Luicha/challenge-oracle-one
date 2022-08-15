@@ -1,12 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="style.css">
     <title>Challenge ONE - Encriptador</title>
 </head>
+
 <body>
+    <main>
+        <div class="fila">
+            <div class="columna-izquierda">
+                <img class="logo-alura" src="/img/Vector.png" alt="Logo de Alura">
+
+                <textarea id="area" class="texto" name="mensaje" cols="30" rows="10"
+                    placeholder="Ingrese el texto aquí"></textarea>
+
+                <div class="botones">
+                    <div class="aviso">
+                        <img src="/img/excla.png" alt="signo de exclamación" class="signo">
+                        <p>Solo letras minúsculas y sin acentos</p>
+                    </div>
+                    <button class="boton-principal" onclick="encriptar()">Encriptar</button>
+                    <button class="boton-secundario" onclick="verificar()">Desencriptar</button>
+                </div>
+
+
+            </div>
+
+            <div class="columna-derecha">
+                <div class="rectangulo">
+                    <div class="rectangulo-texto">
+                        <h3 id="resultado" class="resultados">Mensaje secreto</h3>
+
+                        <div id="ocultar">
+                            <img src="/img/Muñeco.png" alt="Una persona buscando algo" class="muneco">
+                            <h2>No se encontró ningún mensaje</h2>
+                            <p class="texto-cuadro">Ingresa el texto que deseas encriptar o desencriptar.</p>
+                        </div>
+                    </div>
+                    <button class="boton-copiar" onclick="copiar()">Copiar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+
+        var input = document.getElementById("area");
+        var resultado = document.getElementById("resultado");
+        var ocultar = document.getElementById("ocultar");
     
+        function encriptar() {
+            var mensaje = input.value;
+
+            mensaje = mensaje.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+
+            resultado.style.visibility = 'visible';
+            ocultar.style.visibility = 'hidden';
+
+            resultado = document.querySelector(".resultados");
+            resultado.textContent = mensaje.toString();
+
+        }
+
+        function verificar() {
+            var mensaje = input.value;
+
+            mensaje = mensaje.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ai/g, "a").replace(/ober/g, "o").replace(/ufat/g, "u");
+
+            resultado.style.visibility = 'visible';
+            ocultar.style.visibility = 'hidden';
+
+            resultado = document.querySelector(".resultados");
+            resultado.textContent = mensaje.toString();
+        }
+
+        function copiar() {
+            resultado.select();
+            navigator.clipboard.writeText(resultado.toString());
+        };
+
+
+    </script>
+
 </body>
+
 </html>
