@@ -177,3 +177,44 @@ h3 {
   vertical-align: middle;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 600px) {
+
+  main {
+    width: auto;
+  }
+
+  .fila {
+    width: auto;
+    display: block;
+  }
+
+  .columna-izquierda {
+    width: 100%;
+    display: block;
+    height: fit-content;
+    margin-bottom: 400px;
+    margin-left: 20px;
+  }
+
+  .columna-derecha {
+    width: 100%;
+    display:  inline-block;
+    margin-top: auto;
+  }
+
+  .botones {
+    width: 100%;
+    margin: 0 0;
+    
+  }
+
+  .rectangulo {
+    margin 0 0;
+  }
+
+  .texto {
+    max-width: fit-content;
+    width: auto;
+  }
+}
