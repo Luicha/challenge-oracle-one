@@ -53,7 +53,8 @@
         var input = document.getElementById("area");
         var resultado = document.getElementById("resultado");
         var ocultar = document.getElementById("ocultar");
-    
+       
+
         function encriptar() {
             var mensaje = input.value;
 
@@ -80,8 +81,14 @@
         }
 
         function copiar() {
-            resultado.select();
-            navigator.clipboard.writeText(resultado.toString());
+            const copyToClipboard = str => {
+                if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+                    return navigator.clipboard.writeText(str);
+                return Promise.reject('The Clipboard API is not available.');
+            };
+
+            copyToClipboard(resultado.innerHTML.toString());
+        
         };
 
 
